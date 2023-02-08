@@ -1,11 +1,13 @@
-package com.example.gestionnairecontacts.repository.Entity;
+package com.example.gestionnairecontacts.repository.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user_data")
 public class User {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
