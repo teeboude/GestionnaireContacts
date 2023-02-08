@@ -3,6 +3,8 @@ package com.example.gestionnairecontacts.repository.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.awt.*;
+
 @Entity
 public class User {
     @Id
