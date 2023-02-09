@@ -2,6 +2,8 @@ package com.example.gestionnairecontacts.repository.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "contact_data")
 public class Contact {
@@ -15,12 +17,14 @@ public class Contact {
     private String phone;
     private String description;
 
-    //ici sera une ManyToMany sur elle-même
-    private String lien;
+
+    @OneToMany(mappedBy = "contactEntree",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Relation> relations;
 
     public Contact() {
     }
 
+    // getters et setters
     public Long getId() {
         return id;
     }
@@ -69,11 +73,11 @@ public class Contact {
         this.description = description;
     }
 
-    public String getLien() {
-        return lien;
+    public List<Relation> getRelations() {
+        return relations;
     }
 
-    public void setLien(String lien) {
-        this.lien = lien;
+    public void setRelations(List<Relation> relations) {
+        this.relations = relations;
     }
 }
