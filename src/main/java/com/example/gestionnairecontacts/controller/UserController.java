@@ -20,19 +20,6 @@ public class UserController {
         return "profile";
     }
 
-    @GetMapping(path = "/profile-update/{id}")
-    public String displayProfileUpdate (Model model, @PathVariable Long id) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return "profile-update";
-    }
-
-    @PutMapping(path = "/profile-update/{id}")
-    public String profileUpdate (@ModelAttribute User user) {
-        userService.addUser(user);
-        return "redirect:profile";
-    }
-
     @GetMapping(path = "/profile-create")
     public String displayProfileCreate (Model model) {
         User user = new User();
@@ -42,6 +29,19 @@ public class UserController {
 
     @PostMapping(path = "/profile-create")
     public String profileCreate (@ModelAttribute User user) {
+        userService.addUser(user);
+        return "redirect:profile";
+    }
+
+    @GetMapping(path = "/profile-update/{id}")
+    public String displayProfileUpdate (Model model, @PathVariable Long id) {
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return "profile-update";
+    }
+
+    @PutMapping(path = "/profile-update/{id}")
+    public String profileUpdate (@ModelAttribute User user) {
         userService.addUser(user);
         return "redirect:profile";
     }

@@ -17,20 +17,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void updateUser(Long id, User newUser) {
-        User oldUser = userRepository.findById(id).get();
-        oldUser.setEmail(newUser.getEmail());
-        oldUser.setFirstname(newUser.getFirstname());
-        oldUser.setLastname(newUser.getLastname());
-        oldUser.setPassword(newUser.getPassword());
-        oldUser.setPhoto(newUser.getPhoto());
-        userRepository.save(oldUser);
-    }
-
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
-
     public User getUser(Long id) {
        User user = userRepository.findById(id).get();
     return user;
