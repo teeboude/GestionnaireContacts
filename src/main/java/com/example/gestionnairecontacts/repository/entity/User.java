@@ -2,9 +2,10 @@ package com.example.gestionnairecontacts.repository.entity;
 
 import jakarta.persistence.*;
 
-@Table(name = "user_data")
 @Entity
+@Table(name = "user_data")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
