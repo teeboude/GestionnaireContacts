@@ -1,6 +1,6 @@
 package com.example.gestionnairecontacts.repository;
 
-import com.example.gestionnairecontacts.repository.Entity.Contact;
+import com.example.gestionnairecontacts.repository.entity.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

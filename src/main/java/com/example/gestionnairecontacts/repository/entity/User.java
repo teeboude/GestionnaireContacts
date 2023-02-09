@@ -1,24 +1,23 @@
-package com.example.gestionnairecontacts.repository.Entity;
+package com.example.gestionnairecontacts.repository.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Table(name = "user_data")
 @Entity
-public class Contact {
-
+public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
     private String email;
-    private String phone;
-    private String description;
+    private String password;
+    private String photo;
 
-    //ici sera une ManyToMany sur elle-même
-    private String lien;
 
-    public Contact() {
+    public User() {
     }
+
 
     public Long getId() {
         return id;
@@ -52,27 +51,19 @@ public class Contact {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLien() {
-        return lien;
-    }
-
-    public void setLien(String lien) {
-        this.lien = lien;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
