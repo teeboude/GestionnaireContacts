@@ -31,7 +31,7 @@ public class ContactController {
     }
 
     @GetMapping(path = "/list/{id}")
-    public String showSingleContact (Model model, @RequestParam Long id) {
+    public String showSingleContact (Model model, @PathVariable Long id) {
         model.addAttribute(contactService.getContact(id));
         return "contact-profile";
     }
@@ -49,14 +49,14 @@ public class ContactController {
         return "redirect:list";
     }
 
-    @GetMapping(path = "/contact-create")
+    @GetMapping(path = "/contact-update/{id}")
     public String displayContactUpdate (Model model, @PathVariable Long id) {
         Contact contact = contactService.getContact(id);
         model.addAttribute("contact", contact);
         return "contact-create";
     }
 
-    @PostMapping(path = "/contact-create")
+    @PutMapping(path = "/contact-update/{id}")
     public String contactUpdate (@ModelAttribute Contact contact) {
         contactService.addContact(contact);
         return "redirect:profile";
