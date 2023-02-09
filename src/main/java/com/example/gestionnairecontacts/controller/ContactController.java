@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Contact")
+@RequestMapping("/contact")
 public class ContactController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class ContactController {
             contacts = contactService.getAllContacts();
         }
         model.addAttribute("contacts", contacts);
-        return "list";
+        return "contact-list";
     }
 
     @GetMapping(path = "/list/{id}")
