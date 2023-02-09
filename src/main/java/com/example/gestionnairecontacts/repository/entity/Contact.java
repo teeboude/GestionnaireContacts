@@ -18,8 +18,7 @@ public class Contact {
     private String description;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable()
+    @OneToMany(mappedBy = "contactEntree",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Relation> relations;
 
     public Contact() {
