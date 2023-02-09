@@ -18,7 +18,8 @@ public class Contact {
     private String description;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable()
     private List<Relation> relations;
 
     public Contact() {

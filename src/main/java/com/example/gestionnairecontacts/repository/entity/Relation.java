@@ -40,6 +40,19 @@ public class Relation {
         this.lien = lien;
     }
 
+    public Contact getContactEntree() {
+        return contactEntree;
+    }
 
+    public void setContactEntree(Contact contactEntree) {
+        this.contactEntree = contactEntree;
+    }
 
+    public Contact getContactSortie() {
+        return contactSortie;
+    }
+
+    public void setContactSortie(Contact contactSortie) {
+        this.contactSortie = contactSortie;
+    }
 }
