@@ -16,20 +16,44 @@
 <div class="container">
     <div>
         <h5>Infos personnelles</h5>
-        <ul>
-            <li th:text="${user.getFirstname()}"></li>
-            <li th:text="${user.getLastname()}"></li>
-            <li th:text="${user.getPhoto()}"></li>
-        </ul>
+        <table class="table">
+            <thead>
+            <tr class = "table-primary">
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Photo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${user.getFirstname()}"></td>
+                <td th:text="${user.getLastname()}"></td>
+                <td th:text="${user.getPhoto()}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div>
         <h5>Logins</h5>
-        <ul>
-            <li th:text="${user.getEmail()}"></li>
-            <li th:text="${user.getPassword()}"></li>
-        </ul>
+        <table class="table ">
+            <thead>
+            <tr class = "table-primary">
+                <th>Email</th>
+                <th>Mot de passe</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${user.getEmail()}"></td>
+                <td th:text="${user.getPassword()}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <a class="btn btn-primary" th:href="@{/user/profile-update/}+${user.getId()}">Editer le profil</a>
+    <div>
+        <a class="btn btn-primary" th:href="@{/user/profile-update/}+${user.getId()}">Editer le profil</a>
+    </div>
+
 </div>
 </body>
 </html>
