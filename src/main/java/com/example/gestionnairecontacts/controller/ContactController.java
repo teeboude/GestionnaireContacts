@@ -43,7 +43,7 @@ public class ContactController {
     public String displayContactCreate (Model model) {
         Contact contact = new Contact();
         model.addAttribute("contact", contact);
-        return "contact-create";
+        return "contact-add";
     }
 
     @PostMapping(path = "/create")
@@ -60,7 +60,7 @@ public class ContactController {
             return "contact-update";
         } else {
             System.out.println("Ce contact n'existe pas!");
-            return "redirect:contact-list";
+            return "redirect:contact-detail";
         }
     }
 
@@ -77,13 +77,13 @@ public class ContactController {
         model.addAttribute("relation", relation);
         List<Contact> contacts = contactService.getAllContacts();
         model.addAttribute("contacts", contacts);
-        return "relation-create";
+        return "relation-add";
     }
 
     @PostMapping(path = "/update/relation")
-    public String relationCreate (Relation relation) {
+    public String relationCreate (@ModelAttribute Relation relation) {
         relationService.addRelation(relation);
-        return "redirect:contact-detail";
+        return "redirect:/contact/list";
     }
 
 
