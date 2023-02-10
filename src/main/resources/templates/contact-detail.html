@@ -14,27 +14,31 @@
 </header>
 <section>
     <div class="container">
-        <p th:text="${contact.email}"></p>
-        <p th:text="${contact.phone}"></p>
-        <p th:text="${contact.description}"></p>
-        <table class="table">
-            <thead>
-            <tr class = "table-primary">
-                <th>Lien</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Accès à la fiche</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="l:${contact.relations}">
-                <td th:text="${l.lien}"></td>
-                <td th:text="${l.contactSortie.firstname}"></td>
-                <td th:text="${l.contactSortie.lastname}"></td>
-                <td><a th:href="@{/contact/list/}+${l.id}">Voir plus</a></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <p th:text="${contact.email}"></p>
+                <p th:text="${contact.phone}"></p>
+                <p th:text="${contact.description}"></p>
+                <table class="table">
+                    <thead>
+                    <tr class = "table-primary">
+                        <th>Lien</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Accès à la fiche</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="l:${contact.relations}">
+                        <td th:text="${l.lien}"></td>
+                        <td th:text="${l.contactSortie.firstname}"></td>
+                        <td th:text="${l.contactSortie.lastname}"></td>
+                        <td><a th:href="@{/contact/list/}+${l.id}">Voir plus</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 </body>
