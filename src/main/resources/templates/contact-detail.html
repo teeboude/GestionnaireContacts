@@ -10,34 +10,34 @@
 </head>
 <body>
 <header>
-    <h3 th:text="${contact.firstname}    +${contact.lastname}" class="text-center">titre</h3>
+    <h3 th:text="${contact.lastname}" class="text-center">titre</h3>
 </header>
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="">
+            <div>
                 <p th:text="${contact.email}"></p>
                 <p th:text="${contact.phone}"></p>
                 <p th:text="${contact.description}"></p>
-                <table class="table">
-                    <thead>
-                    <tr class = "table-primary">
-                        <th>Lien</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Accès à la fiche</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="l:${contact.relations}">
-                        <td th:text="${l.lien}"></td>
-                        <td th:text="${l.contactSortie.firstname}"></td>
-                        <td th:text="${l.contactSortie.lastname}"></td>
-                        <td><a th:href="@{/contact/list/}+${l.id}">Voir plus</a></td>
-                    </tr>
-                    </tbody>
-                </table>
             </div>
+            <table class="table">
+                <thead>
+                <tr class = "table-primary">
+                    <th>Lien</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Accès à la fiche</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="l:${contact.relations}">
+                    <td th:text="${l.lien}"></td>
+                    <td th:text="${l.contactSortie.firstname}"></td>
+                    <td th:text="${l.contactSortie.lastname}"></td>
+                    <td><a th:href="@{/contact/list/}+${l.id}">Voir plus</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
