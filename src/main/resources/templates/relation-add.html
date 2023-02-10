@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-  <h3 class="text-center">Nouvelle relation</h3>
+  <h3 class="text-center">Nouvelle relation de </h3>
 </header>
 <section>
   <div class="container">
@@ -21,8 +21,7 @@
           <input type="text" th:field="*{lien}" id="relationship">
         </div>
         <div class="mb-3">
-          <label for="contact1" class="form-label">Lien: </label>
-          <input type="text" th:field="*{contactEntree}" th:value="${relation.contactEntree}" id="contact1">
+          <input type="hidden" th:field="*{contactEntree}" th:value="${relation.contactEntree}" id="contact1">
         </div>
         <div class="mb-3">
           <label for="contact2" class="form-label">Avec: </label>
