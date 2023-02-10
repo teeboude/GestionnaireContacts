@@ -83,7 +83,7 @@ public class ContactController {
     @PostMapping(path = "/update/relation")
     public String relationCreate (@ModelAttribute Relation relation) {
         relationService.addRelation(relation);
-        return "redirect:/contact/list";
+        return "redirect:/contact/list/"+relation.getContactEntree().getId();
     }
 
 
