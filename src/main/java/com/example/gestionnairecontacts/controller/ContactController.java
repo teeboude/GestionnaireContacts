@@ -35,7 +35,7 @@ public class ContactController {
 
     @GetMapping(path = "/list/{id}")
     public String showSingleContact (Model model, @PathVariable Long id) {
-        model.addAttribute(contactService.getContact(id));
+        model.addAttribute(contactService.getContact(id).get());
         return "contact-detail";
     }
     
