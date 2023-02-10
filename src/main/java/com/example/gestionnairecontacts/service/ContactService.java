@@ -11,7 +11,7 @@ import java.util.List;
 public class ContactService {
 
     @Autowired
-    ContactRepository contactRepository;
+    private ContactRepository contactRepository;
 
     public void addContact(Contact contact) {
         contactRepository.save(contact);
@@ -27,8 +27,7 @@ public class ContactService {
     }
 
     public List<Contact> getAllContacts() {
-        List<Contact> contacts = contactRepository.findAll();
-        return contacts;
+        return contactRepository.findAll();
     }
 
     public List<Contact> getContactSearch(String search) {
