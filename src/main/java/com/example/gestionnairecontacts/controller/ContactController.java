@@ -33,13 +33,13 @@ public class ContactController {
     @GetMapping(path = "/list/{id}")
     public String showSingleContact (Model model, @PathVariable Long id) {
         model.addAttribute(contactService.getContact(id));
-        return "contact-profile";
+        return "contact-detail";
     }
 
     @GetMapping(path = "/contact-create")
     public String displayContactCreate (Model model) {
         Contact contact = new Contact();
-        model.addAttribute(contact);
+        model.addAttribute("contact", contact);
         return "contact-create";
     }
 
