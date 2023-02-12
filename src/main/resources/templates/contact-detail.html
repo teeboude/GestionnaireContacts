@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Fiche détaillée</title>
+    <title>Gestionnaire de contacts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
@@ -20,6 +20,7 @@
                 <p th:text="${contact.email}"></p>
                 <p th:text="${contact.phone}"></p>
                 <p th:text="${contact.description}"></p>
+                <p><a th:href="@{/contact/update/}+${contact.id}" >Modifier le contact</a></p>
             </div>
             <table class="table">
                 <thead>
@@ -27,7 +28,6 @@
                     <th>Lien</th>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Accès à la fiche</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,9 @@
                     <td th:text="${l.lien}"></td>
                     <td th:text="${l.contactSortie.firstname}"></td>
                     <td th:text="${l.contactSortie.lastname}"></td>
-                    <td><a th:href="@{/contact/list/}+${l.id}">Voir plus</a></td>
+                    <td><a th:href="@{/contact/list/}+${l.contactSortie.id}">Voir Contact</a></td>
+                    <td><a th:href="@{/contact/update/relation/}+${l.contactEntree.id}+@{/update/}+${l.id}">Modifier</a></td>
+                    <td><a th:href="@{/contact/update/relation/}+${l.id}+@{/delete}" class="btn-close" aria-label="supprimer la relation"></a></td>
                 </tr>
                 </tbody>
             </table>
