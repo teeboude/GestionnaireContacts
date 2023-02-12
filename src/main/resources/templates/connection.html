@@ -9,17 +9,19 @@
 <body class="text-center">
 <header>
     <h2>Gestionnaire de contacts</h2>
+    <h3 th:text="${message}" class="text-center"></h3>
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 </header>
 
 <main>
     <section class="container">
-        <form action="#" th:action="@{/connection}" th:object="${user}" method="post">
-            <div class="row g-3 align-items-center">
+        <form action="#" th:action="@{/connection/}" method="post">
+            <div class="row g-3 align-items-center text-center">
                 <div class="col-auto">
                     <label for="email" class="col-form-label">E-mail </label>
                 </div>
                 <div class="col-auto">
-                    <input id="email" type="text" th:field="*{email}" class="form-control">
+                    <input id="email" name="email" type="text" th:value="${email}" class="form-control">
                 </div>
             </div>
             <div class="row g-3 align-items-center">
@@ -27,7 +29,7 @@
                     <label for="password" class="col-form-label">Mot de Passe</label>
                 </div>
                 <div class="col-auto">
-                    <input id="password" type="text" th:field="*{password}" class="form-control">
+                    <input id="password" name="password" type="text" th:value="${password}" class="form-control">
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Se connecter</button>

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,4 +29,22 @@ public class UserService {
         return users;
 
     }
+
+    public boolean tryConnection(String email, String passwordEntered) {
+        boolean connected = false;
+        Optional<User> user = Optional.empty();
+        try{
+            user = userRepository.findUserByEmail(email);
+        } catch (Exception e) {
+            System.out.println("Pas d'accès : "+e);
+        }
+
+        if (user.isPresent()) {
+            if (passwordEntered.equals(user.get().getPassword())) {
+                connected = true;
+            }
+        }
+        return connected;
+    }
+
 }
