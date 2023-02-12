@@ -18,14 +18,20 @@ public class RelationService {
         relationRepository.save(relation);
     }
 
-    public void deleteRelation(Long id) {
+    public Long deleteRelation(Long id) {
+        Long idContact = relationRepository.findById(id).get().getContactEntree().getId();
+        relationRepository.findById(id).get().setContactSortie(null);
+        relationRepository.findById(id).get().setContactEntree(null);
         relationRepository.deleteById(id);
+        return idContact;
     }
 
     public List<Relation> getAllRelations() {
         return relationRepository.findAll();
     }
-
+    public List<Relation> getRelations(Long id) {
+        return relationRepository.findByContactEntreeIdContainingOrContactSortieIdContaining(id, id);
+    }
     public Optional<Relation> getRelation(Long id) {
         return relationRepository.findById(id);
     }

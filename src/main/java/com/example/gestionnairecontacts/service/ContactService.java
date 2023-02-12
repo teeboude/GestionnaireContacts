@@ -14,6 +14,7 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
+
     public void addContact(Contact contact) {
         contactRepository.save(contact);
     }

@@ -74,6 +74,13 @@ public class ContactController {
 
     @GetMapping(path = "/delete/{id}")
     public String contactDelete (@PathVariable Long id) {
+//        List<Relation> relations = relationService.getRelations(id);
+//        System.out.println(relations.get(1));
+//        for (int i = 0; i <= relations.size(); i++) {
+//            System.out.println(relations.get(i));
+//            relationService.deleteRelation(relations.get(i).getId());
+//        }
+        //TODO..
         contactService.deleteContact(id);
         return "redirect:/contact/list";
 
@@ -119,9 +126,8 @@ public class ContactController {
 
     @GetMapping(path = "/update/relation/{id}/delete")
     public String relationDelete (@PathVariable Long id) {
-        Long idc = relationService.getRelation(id).get().getContactEntree().getId();
-        relationService.deleteRelation(id);
-        return "redirect:/contact/list/"+idc;
+        Long idContact = relationService.deleteRelation(id);
+        return "redirect:/contact/list/"+idContact;
     }
 
 }
