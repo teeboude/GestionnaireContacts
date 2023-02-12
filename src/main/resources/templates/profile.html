@@ -11,7 +11,7 @@
 <body>
 <header>
   <div th:replace="~{include/navbar :: navbar}">la nav</div>
-  <h3>Détail du profil</h3>
+  <h3 class="text-center">Détail du profil</h3>
 </header>
 <div class="container">
     <div>
@@ -28,10 +28,13 @@
             <tr>
                 <td th:text="${user.getFirstname()}"></td>
                 <td th:text="${user.getLastname()}"></td>
-                <td th:text="${user.getPhoto()}"></td>
+                <td><img th:src="${user.getPhoto}" alt="photo de profil" class="img-fluid"/></td>
             </tr>
             </tbody>
         </table>
+    </div>
+    <div>
+
     </div>
     <div>
         <h5>Logins</h5>
