@@ -69,7 +69,7 @@ public class ContactController {
     @PostMapping(path = "/update/{id}")
     public String contactUpdate (@ModelAttribute Contact contact) {
         contactService.addContact(contact);
-        return "redirect:profile";
+        return "redirect:list";
     }
 
     @GetMapping(path = "/delete/{id}")
