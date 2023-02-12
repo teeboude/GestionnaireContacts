@@ -36,14 +36,17 @@ public class UserController {
     @GetMapping(path = "/profile-update/{id}")
     public String displayProfileUpdate (Model model, @PathVariable Long id) {
         User user = userService.getUser(id);
+        String message = "Modifier le profil " + user.getLastname() + " " + user.getFirstname();
+        model.addAttribute("message", message);
         model.addAttribute("user", user);
         return "profile-update";
     }
 
-    @PutMapping(path = "/profile-update/{id}")
+    @PostMapping(path = "/profile-update/{id}")
     public String profileUpdate (@ModelAttribute User user) {
         userService.addUser(user);
-        return "redirect:profile";
+        return "redirect:/user/profile/"+user.getId();
     }
+
 
 }
