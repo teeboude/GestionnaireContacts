@@ -4,5 +4,5 @@
 Url pour accéder à l'application (attention à vôtre localhost) :
 http://localhost:8080/connection/
 
-logins à utiliser :
+logins à utiliser (si la base est initialisée avec l'user adminman):
 
