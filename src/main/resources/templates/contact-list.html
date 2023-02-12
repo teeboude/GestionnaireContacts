@@ -30,6 +30,7 @@
             <td th:text="${p.firstname}"></td>
             <td th:text="${p.lastname}"></td>
             <td><a th:href="@{/contact/list/}+${p.id}">Fiche</a></td>
+            <td><a th:href="@{/contact/delete/}+${p.id}" class="btn-close" aria-label="supprimer le contact"></a></td>
           </tr>
           </tbody>
         </table>

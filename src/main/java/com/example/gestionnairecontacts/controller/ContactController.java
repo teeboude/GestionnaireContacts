@@ -56,6 +56,8 @@ public class ContactController {
     public String displayContactUpdate (Model model, @PathVariable Long id) {
         Optional<Contact> contact = contactService.getContact(id);
         if (contact.isPresent()) {
+            String message = "Modifier le contact " + contact.get().getLastname() + " " + contact.get().getFirstname();
+            model.addAttribute("message", message);
             model.addAttribute("contact", contact.get());
             return "contact-update";
         } else {
@@ -70,10 +72,20 @@ public class ContactController {
         return "redirect:profile";
     }
 
+    @GetMapping(path = "/delete/{id}")
+    public String contactDelete (@PathVariable Long id) {
+        contactService.deleteContact(id);
+        return "redirect:/contact/list";
+
+    }
+
     @GetMapping(path = "/update/relation/{id}")
     public String displayRelationCreate (Model model, @PathVariable Long id) {
         Relation relation = new Relation();
         relation.setContactEntree(contactService.getContact(id).get());
+        String message = "Nouvelle relation de " + relation.getContactEntree().getLastname() + " "
+                + relation.getContactEntree().getFirstname();
+        model.addAttribute("message", message);
         model.addAttribute("relation", relation);
         List<Contact> contacts = contactService.getAllContacts();
         model.addAttribute("contacts", contacts);
@@ -86,5 +98,30 @@ public class ContactController {
         return "redirect:/contact/list/"+relation.getContactEntree().getId();
     }
 
+    @GetMapping(path = "/update/relation/{id}/update/{id2}")
+    public String displayRelationUpdate (Model model, @PathVariable Long id2) {
+        Relation relation = relationService.getRelation(id2).get();
+        String message = "Modification de la relation entre " + relation.getContactEntree().getLastname() + " "
+                + relation.getContactEntree().getFirstname() + " et " + relation.getContactSortie().getLastname() + " "
+                + relation.getContactSortie().getFirstname();
+        model.addAttribute("message", message);
+        model.addAttribute("relation", relation);
+        List<Contact> contacts = contactService.getAllContacts();
+        model.addAttribute("contacts", contacts);
+        return "relation-update";
+    }
+
+    @PostMapping(path = "/update/relation/{id}/update")
+    public String relationUpdate (@ModelAttribute Relation relation) {
+        relationService.addRelation(relation);
+        return "redirect:/contact/list/"+relation.getContactEntree().getId();
+    }
+
+    @GetMapping(path = "/update/relation/{id}/delete")
+    public String relationDelete (@PathVariable Long id) {
+        Long idc = relationService.getRelation(id).get().getContactEntree().getId();
+        relationService.deleteRelation(id);
+        return "redirect:/contact/list/"+idc;
+    }
 
 }

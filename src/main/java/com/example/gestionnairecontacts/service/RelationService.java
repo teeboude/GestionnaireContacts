@@ -26,4 +26,8 @@ public class RelationService {
         return relationRepository.findAll();
     }
 
+    public Optional<Relation> getRelation(Long id) {
+        return relationRepository.findById(id);
+    }
+
 }

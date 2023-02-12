@@ -17,6 +17,9 @@
     <div>
       <form action="#" th:action="@{/contact/update/relation}" th:object="${relation}" method="post">
         <div class="mb-3">
+          <input type="hidden" th:field="*{id}">
+        </div>
+        <div class="mb-3">
           <label for="relationship" class="form-label">Lien: </label>
           <input type="text" th:field="*{lien}" id="relationship">
         </div>
@@ -24,10 +27,7 @@
           <input type="hidden" th:field="*{contactEntree}" th:value="${relation.contactEntree}">
         </div>
         <div class="mb-3">
-          <label for="contact2" class="form-label">Avec: </label>
-          <select th:field="*{contactSortie}" id="contact2"  class="form-select">
-            <option th:each="contact1 : ${contacts}" th:value="${contact1.id}" th:text="${contact1.firstname} +' '+ ${contact1.lastname}">Sélectionner un contact</option>
-          </select>
+          <input type="hidden" th:field="*{contactSortie}" th:value="${relation.contactSortie}">
         </div>
         <button type="submit" class="btn btn-primary">Valider</button>
       </form>
